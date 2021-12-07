@@ -1,18 +1,30 @@
-<nav>
-    {% url "public:index" as index_url %}
-    <span>{% if request.path == index_url %}Home{% else %}<a href='{{ index_url }}'>Home</a>{% endif %}</span>
-    {% url "public:about" as about_url %}
-    <span>{% if request.path == about_url %}About{% else %}<a href='{{ about_url }}'>About</a>{% endif %}</span>
-    {% url "public:contact" as contact_url %}
-    <span>{% if request.path == contact_url %}Contact{% else %}<a href='{{ contact_url }}'>Contact</a>{% endif %}</span>
-    <span style='float:right'>
-        {% if user.is_authenticated %}
-            {% url 'profile' as profile_url %}
-            <span>Hi {% if request.path == profile_url %}{{user.username}}{% else %}<a href='{{ profile_url }}'>{{user.username}}</a>{% endif %}</span>
-            <span><a href='{% url "accounts:logout" %}'>Logout</a></span>
-        {% else %}
-            <span><a href='{% url "accounts:login" %}'>Login</a></span>
-        {% endif %}
-    </span>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#!">Buff</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                {% url "public:index" as index_url %}
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ index_url }}">Início</a></li>
+                {% url "public:about" as about_url %}
+                <li class="nav-item"><a class="nav-link" href="{{ about_url }}">Sobre nós</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produtos</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Todos Produtos</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Mais vendidos</a></li>
+                        <li><a class="dropdown-item" href="#!">Lançamentos</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Carrinho
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </form>
+        </div>
+    </div>
 </nav>

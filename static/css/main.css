@@ -1,0 +1,12 @@
+:root {
+    --floral-white: #FFFDF7;
+    --dark-yellow: #FDC921;
+    --light-yellow: #FDD85D;
+    --dark-blue: #6798C0;
+    --light-blue: #99D6EA;
+}
+
+body {
+    color: var(--dark-blue);
+    background-color: var(--floral-white);
+  }
